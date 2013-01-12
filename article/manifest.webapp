@@ -1,0 +1,19 @@
+{
+  "name" : "ArticleTranslator",
+  "launch_path" : "/index.html",
+  "developer":{
+    "name" : "George,Richard"
+  },
+  "description" : "keke",
+  "icons":{
+    "128":"/icon.png"
+  },
+  "permissions":{
+    "network-http" : {
+      "description" : "Required to access other domain data"
+    }
+  },
+  "type": "web"
+
+
+} 
