@@ -44,11 +44,16 @@ var updateUser = function(obj, type, profile, callback){
   if(obj == undefined) obj = new models.user();
   /* email */ 
 
+  if(typeof(profile.email)==="string"){
+    obj.email = profile.email;
+  }else{
+    obj.email = profile.emails[0].value;
+  }
 
-  obj.email = profile.emails[0].value;
+  
   //password set default
 
-  obj.password = "password";
+  obj.password = profile.password || "password";
   /* name */
   
   switch(type){
@@ -72,6 +77,13 @@ var updateUser = function(obj, type, profile, callback){
     break; // eof fb
     case "google":
       obj.google = profile;
+    break;
+    case "local":
+      obj.local = profile;
+      obj.gender = 1;
+      obj.password = profile.password;
+      obj.name = profile.username;
+      obj.email = profile.email;
     break;
   }
   obj.lastLogin = Date.now();
@@ -169,5 +181,5 @@ exports.update = update;
 exports.updateByAuth = updateByAuth;
 exports.find = find;
 exports.models= models;
-
+exports.updateUser = updateUser;
 

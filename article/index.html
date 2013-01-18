@@ -1,93 +1,28 @@
 <!DOCTYPE HTML>
-<html class="no-js ui-mobile-rendering" lang="en">
+<html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="style/jquery.mobile-1.2.0.css">
-  <script src="js/libs/require.js" data-main="js/config"></script>
-<title>Chew</title>
+  <link rel="stylesheet" href="style/custom.css">
+  <link rel="stylesheet" href="style/bootstrap.css">
+  <link rel="stylesheet" href="style/bootstrap-responsive.css">
+<!--  <link rel="stylesheet" href="style/jquery.mobile-1.2.0.css">-->
+ <title>Chew</title>
 </head>
-<body>
+<body data-spy="scroll">
 
-<div id="homeView" data-role="page" data-title="home">
-  <div data-role="header">
-    <h1> Main</h1>
-  </div>
-  <div data-role="content">
-      <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
-        <label for="email" class="ui-input-text">
-          Email:
-        </label>
-        <div class="ui-input-text ui-shadow-insert ui-corner-all ui-btn-shadow ui-body-c">
-          <input id="login-email" type="email" name="email" id="email" value class="ui-input-text ui-body-c">
-        </div>
-      </div>
-      <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
-        <label for="password" class="ui-input-text">
-          Password:
-        </label>
-        <div  class="ui-input-text ui-shadow-insert ui-corner-all ui-btn-shadow ui-body-c">
-          <input id="login-pwd" type="password" name="password" id="password" value class="ui-input-text ui-body-c">
-        </div>
-      </div>
-      <div id="login" type="submit" data-role="button" >Login</div>
-    <a href="#main">test</a>
-    <p>Connect to other accounts or <a href="#register">register </a> a new account</p>
-    <a href="/auth/facebook"><img class="oauth" id="facebook" src="style/image/facebook.png" data-inline="true"/></a>
-    <a href="/auth/google"><img class="oauth" id="google" src="style/image/google.png" data-inline="true"/></a>
-    
+<div class="navbar navbar-inverse navbar-fixed-top" id="topbar">
+
+</div>
+<header class="">
+</header>
+<div class="container" >
+  <div class="row" id="container">
   </div>
 </div>
 
-<div id="navView" data-role="page" data-title="nav" >
-</div>
+<script src="js/libs/require.js" data-main="js/config"></script>
 
-<div id="pictureView" data-role="page" data-title="picture">
-<!--   <div data-role="header">
-    <h1> Register</h1>
-  </div>
-  <div data-role="content" class="content">
-  
-  </div>
--->
-</div>
-
-  
-  
-<div id="mainView" data-role="page" data-title="main">
-<!--   <div data-role="header">
-    <h1> Functions </h1>
-  </div>
-  <div data-role="content">
-    <a href="#pictureView" data-icon="search" data-iconpos="top" data-role="button" data-icon="delete">Scan</a>
-  </div>
--->
-</div>
-
-
-
-
-<div id="articleView" data-role="page" data-title="article" >
-<!--   <div data-role="header">
-    <h1> Register</h1>
-  </div>
-  <div data-role="content">
-    <h2> test2</h2>
-  </div>
--->
-</div>
-  
-
-<div data-role="page" id="logoutView" data-url="/logout">
-
-  <div data-role="header">
-  </div>
-  <div data-role="content">
-  </div>
-
-</div>
 </body>
-,
 
 
 

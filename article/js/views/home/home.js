@@ -5,18 +5,30 @@ define([
   'collection/users',
   'models/user',
   'models/session',
+  'views/register',
+  'vm',
+  'text!template/home/_home.html'
+],function($,_,Backbone,
+  Users,User,
+  Session,
+  RegisterView,
+  VM,
+  tpl){
 
-],function($,_,Backbone,Users,User,Session,tpl){
   var MainView = Backbone.View.extend({
-    el : 'body',
     initialize : function(){
-
-      this.template = _.template(tpl);
+      this.template   =  _.template(tpl);
       this.collection = new Users;
       this.model = new User;
+      this.render();
     },
     events : {
+      "click #register" : "register",
       "click #login" : "login" 
+    },
+    register : function(){
+      VM.HeaderView.setHeader("Register");
+      VM.RegisterView.render();
     },
     login : function(){
       var email = $("#login-email").val(),
@@ -26,7 +38,7 @@ define([
 
     },
     render : function(){
-      
+      $(this.el).html(this.template());
     }
 
   });

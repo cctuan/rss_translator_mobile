@@ -59,9 +59,6 @@ function start(){
   });
 
 
-
-
-
   //google
   passport.use(new googleStrategy({
     clientID : config.google.clientId,
@@ -135,8 +132,19 @@ function start(){
   app.all('/',function(req,res,next){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Header","X-Requested-With");
-    next();
+    return next();
   });
+
+  function registerNewUser(req,res,next){
+    user.updateUser(null, 'local',{
+      email : req.body.email,
+      username : req.body.username,
+      password : req.body.password
+    },function(err,u){
+     // next();
+      res.json(200,u);
+    });
+  }
 
   function ensureAuthenticated(req,res,next){
     if(req.isAuthenticated()){
@@ -206,6 +214,20 @@ function start(){
     }
 
   });
+
+  app.get('/user/logout',function(req,res){
+      
+    res.json(200,req.user.toJSON);
+    req.logout();
+    
+  });
+  app.post('/user/register',
+    registerNewUser,function(req,res){
+
+      res.json(200,req.user.toJSON());
+    }
+  );
+
   app.post('/user/login',
     passport.authenticate('local'),function(req,res){
       if(Array.isArray(req.user))req.user = req.user[0];

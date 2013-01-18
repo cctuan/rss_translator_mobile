@@ -2,41 +2,45 @@ define([
   'jquery',
   'backbone',
   'views/home/home',
-  'views/home/login',
-  'views/home/register',
   'views/picture/picture',
   'views/article/article',
   'views/nav/main',
-  'views/logout'
+  'views/logout',
+  'vm'
 ],function($,Backbone,
   HomeView ,
-  LoginView,
-  RegisterView,
   PictureView,
   ArticleView,
   NavView,
-  LogoutView
+  LogoutView,
+  VM
   ){
   var Router = Backbone.Router.extend({
     initialize : function() {
+     
+      VM.switchLoginout(true);
+
+      VM.NavView      =   new NavView({el : "#container"});
+      VM.PictureView  =   new PictureView({el : "#container"});
+      VM.ArticleView  =   new ArticleView({el:"#container"});
       
-      this.navView      =   new NavView({el : "#navView"});
-      this.pictureView  =   new PictureView({el : "#pictureView"});
-      this.articleView  =   new ArticleView({el:"#articleView"});
-      this.logoutView   =   new LogoutView({el:"#logoutView"});
+      VM.LogoutView   =   new LogoutView({el:"#container"});
+
       Backbone.history.start();
     },
 
     routes : {
-      
-      "pictureView" : "picture",
-      "articleView" : "article",
-      "navView"     : "nav",
-      "logoutView"      : "logout",
-      ""            :"nav"
+      "logout"  : "logout",  
+      "picture" : "picture",
+      "article" : "article",
+      "nav"     : "nav",
+      ""            : "nav"
+    },
+    logout : function(){
+      VM.LogoutView.render();
     },
     nav    : function(){
-      this.navView.render();
+      VM.NavView.render();
     },
     home   : function(){
         
@@ -44,21 +48,11 @@ define([
     main   : function(){
     },
     picture: function(){
-      this.pictureView.render();         
+      VM.PictureView.render();         
     },
     article   : function(){
-      this.articleView.render();
+      VM.ArticleView.render();
     },
-    logout  : function(){
-      this.logoutView.render();
-
-    },
-    changePage : function(page){
-      $(page.el).attr('data-role', 'page');
-      page.render();
-      $('body').append($(page.el));
-      $.mobile.changePage($(page.el), {changeHash:false});
-    }
   });
   return Router;
 

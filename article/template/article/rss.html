@@ -1,0 +1,16 @@
+<div data-role="header" class="ui-header ui-bar-a">
+  <h1>Content</h1>
+</div>
+<div data-role="content" class="ui-content">
+  <%_.each(contents,function(content){%>
+  
+  <div data-art='<%=content.content%>' data-role="collapsible" class="rsscontent">
+    <h3><%=content.title%></h3>
+    <p class="fillup">
+      <%=content.content%>
+    </p>
+  </div>
+  
+  <%})%>
+</div>
+

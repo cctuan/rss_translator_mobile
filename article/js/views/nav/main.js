@@ -8,19 +8,13 @@ define([
     events : {
     },
 
-    logout : function(){
-      
-    },
 
     initialize : function(){
       this.template = _.template(tpl);
     },
     render     : function(){
-      $.mobile.changePage(
-        "#navView", 
-        { changeHash : false}
-      );
-      $(this.el).html(this.template()).trigger("pagecreate");
+  
+      $(this.el).html(this.template());
 
       
     }

@@ -11,17 +11,24 @@ baseUrl: '/js/',
     text:'libs/text',
     template:'../template',
     async :  "libs/async",
-    moment : "libs/moment.min"
+    goog  :  "libs/goog",
+    propertyParser : "libs/propertyParser",
+    moment : "libs/moment.min",
+    bootstrap : "libs/bootstrap",
+    vm : "views/vm"
   },
   shim:{
+    goog : {
+      deps : ['async','propertyParser']
+    },
     underscore:{
       deps:['jquery']
     },
     backbone:{
       deps:['jquery','underscore']
     },
-    jmobile:{
-      deps:['jquery']
-    },
+//    jmobile:{
+ //     deps:['jquery']
+//    },
   }
 });

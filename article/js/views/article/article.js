@@ -2,16 +2,43 @@ define([
   'jquery',
   'underscore',
   'backbone',
+  'views/article/genArticle',
+  'views/article/rss',
   'text!template/article/article.html'
-],function($,_,Backbone,tpl){
-  var MainView = Backbone.View.extend({
+],function($,_,Backbone, GenArticle , RssView ,tpl){
 
+
+  var MainView = Backbone.View.extend({
+    
     initialize : function(){
+      this.article = new GenArticle;
       this.template = _.template(tpl);
+    
+      this.rssView = new RssView({el : "#container"});
     },
+    events : {
+      "click .article-li" : "enterRss"
+    },
+    enterRss : function(e){
+      var self = this;
+      var src  = $(e.currentTarget).data("rss");
+      this.article.getRss(src , function(data){
+        self.rssView.data = data;
+        self.rssView.render(); 
+      });
+
+    },
+    getArticleSrcs : function(callback){
+      callback(this.article.getUrls());
+    },
+
     render     : function(){
-      $(this.el).html(this.template());
-      $.mobile.changePage(this.el,{ reverse : false , changeHash : false});
+      var self = this;
+      this.delegateEvents();
+      this.getArticleSrcs(function(srcs){  
+    
+        $(self.el).html(self.template({srcs:srcs}));
+      });
     }
 
   });

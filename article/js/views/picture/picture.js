@@ -19,11 +19,7 @@ define([
       this.media.snap(); 
     },
     render     : function(){
-      $.mobile.changePage(
-        "#pictureView",
-        {changeHash : false}
-      );
-      $(this.el).html(this.template()).trigger("pagecreate");
+      $(this.el).html(this.template());
 
       
 

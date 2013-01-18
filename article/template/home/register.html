@@ -1,0 +1,34 @@
+<div id="registerView" data-role="page" data-title="register" data-url="/register">
+  <div data-role="header">
+    Register<span id="error-register"></span>
+  </div>
+
+  <div data-role="content">
+    <div data-role="fieldcontain">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="r-email"/>
+
+    </div>
+    <div data-role="fieldcontain">
+      <label for="username">Name</label>
+      <input type="text" name="username" id="r-username"/>
+
+    </div>
+    <div data-role="fieldcontain">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="r-password"/>
+
+    </div>
+    <div data-role="fieldcontain">
+      <label for="cf-password">Re-enter password<span id="info-repwd"></span></label>
+      <input type="password" id="con-password"/>
+
+    </div>
+    <div id="submit" data-role="button">
+      Register
+    </div>
+    <div id="cancel" data-role="button">
+      Cancel
+    </div>
+  </div>
+</div>

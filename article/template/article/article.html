@@ -1,6 +1,13 @@
-   <div data-role="header">
-    <h1> Register</h1>
+   <div data-role="header" class="ui-header ui-bar-a">
+    <h1>Rss List</h1>
   </div>
-  <div data-role="content">
-    <h2> test2</h2>
+  <div data-role="content" class="ui-content" >
+    <ul data-role="listview" data-autodivider="true">
+    <%_.each(srcs,function(src,name){%>
+      <li data-rss="<%=name%>" class="article-li">
+        <a href="#rssView"><%=name%></a>
+      </li>
+
+    <%})%>
+    </ul>
   </div>
