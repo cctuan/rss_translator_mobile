@@ -4,8 +4,7 @@
  */
 define([
   'jquery',
-  'underscore',
-  'jsonp'
+  'underscore'
 ],function($,_){
  
   var baseUrl = "http://www.google.com/dictionary/json?callback=dict_api.callbacks.id100&q={query}&sl=en&tl=en";

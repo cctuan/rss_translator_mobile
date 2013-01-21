@@ -9,7 +9,8 @@ define([
   'views/article/genArticle',
   'views/article/genVoice',
   'views/article/genTranslate',
-  'text!template/article/rss.html'
+  'text!template/article/rss.html',
+  'player'
 ],function($,_,Backbone,  
   GenArticle , 
   GenVoice ,
@@ -41,8 +42,10 @@ define([
     playAudio : function(e){
       var content = $(e.currentTarget)
                     .data("content");
-      $("#playaudio").attr("src",decodeURI(content));
-
+      $("#jquery_jplayer_1").jPlayer("setMedia", {
+        mp3:decodeURI(content)
+      });
+      $("#jquery_jplayer_1").jPlayer("play");
    //   document.getElementById("playaudio").play();
     },
     getRss : function(query,callback){
@@ -62,10 +65,18 @@ define([
           content[0].innerHTML = text;
         });
     },
+                      
     render     : function(query){
       var self = this;
       this.getRss(query,function(data){
         $(self.el).html(self.template({contents:data}));
+        $("#jquery_jplayer_1").jPlayer({
+           
+            swfPath: "../js/libs",
+            supplied: "mp3",
+            wmode: "window"
+          });  
+                 
       });
     }
 
