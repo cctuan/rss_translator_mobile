@@ -1,3 +1,11 @@
+/**
+ *  Get Rss tweets from default Rss Srcs
+ *  Add Rss link
+ *  remove Rss link
+ *  Get Rss list
+ *  
+ */
+
 define([
   'jquery',
   'underscore',

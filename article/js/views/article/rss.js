@@ -1,35 +1,72 @@
+/**
+ * Rss Content 
+ *
+ */
 define([
   'jquery',
   'underscore',
   'backbone',
+  'views/article/genArticle',
   'views/article/genVoice',
+  'views/article/genTranslate',
   'text!template/article/rss.html'
-],function($,_,Backbone,  GenVoice ,tpl){
+],function($,_,Backbone,  
+  GenArticle , 
+  GenVoice ,
+  GenTranslate ,
+  tpl){
 
 
   var MainView = Backbone.View.extend({
     
     initialize : function(){
+      this.article  = new GenArticle;
       this.template = _.template(tpl);
     
     },
     events : {
-      "click .rsscontent" : "genVoiceContent"
+      "click .collapse-rss-title" : "genVoiceContent",
+      "click .textcontent" : "playAudio",
+      "click .translateit" : "translateit"
+    },
+    translateit : function(e){
+      var content = $(e.currentTarget)
+                    .data("content");
+
+      GenTranslate(content,function(data){
+        console.log(data);
+      });
+
+    },
+    playAudio : function(e){
+      var content = $(e.currentTarget)
+                    .data("content");
+      $("#playaudio").attr("src",decodeURI(content));
+
+   //   document.getElementById("playaudio").play();
+    },
+    getRss : function(query,callback){
+
+      this.article.getRss(decodeURI(query),function(data){
+        callback(data);
+
+      });
     },
     genVoiceContent : function(e){
-      var data = $(e.currentTarget).data("art");
-      
-        GenVoice(data,function(text){
-          $(e.target).find(".fillup").html(text);
-
-        });
-      $(e.currentTarget).unbind("click",this.genVoiceContent);
-    },
-    render     : function(){
       var self = this;
-    
-      $(self.el).html(self.template({contents:this.data}));
-
+      var data = $(e.currentTarget).data("content"),
+          contentID = $(e.currentTarget).attr("href");
+      
+        GenVoice(data,function(text,src){
+          var content = $(contentID).find("div>p:first");
+          content[0].innerHTML = text;
+        });
+    },
+    render     : function(query){
+      var self = this;
+      this.getRss(query,function(data){
+        $(self.el).html(self.template({contents:data}));
+      });
     }
 
   });

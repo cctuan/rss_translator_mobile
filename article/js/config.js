@@ -15,7 +15,8 @@ baseUrl: '/js/',
     propertyParser : "libs/propertyParser",
     moment : "libs/moment.min",
     bootstrap : "libs/bootstrap",
-    vm : "views/vm"
+    vm : "views/vm",
+    jsonp : "libs/jquery.jsonp"
   },
   shim:{
     goog : {

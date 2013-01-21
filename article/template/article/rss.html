@@ -1,16 +1,20 @@
-<div data-role="header" class="ui-header ui-bar-a">
-  <h1>Content</h1>
-</div>
-<div data-role="content" class="ui-content">
-  <%_.each(contents,function(content){%>
-  
-  <div data-art='<%=content.content%>' data-role="collapsible" class="rsscontent">
-    <h3><%=content.title%></h3>
-    <p class="fillup">
-      <%=content.content%>
-    </p>
+<div class="accordion" id="accordion2">
+  <%_.each(contents,function(content,index){%>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle collapsed collapse-rss-title" data-toggle="collapse" data-content="<%=encodeURI(content.content)%>" data-parent="#accordion2" href="#rss_<%=index%>">
+      <%=content.title%>
+      </a>
+    </div>
+    <div id="rss_<%=index%>" class="accordion-body collapse collapse-rss">
+      <div class="accordion-inner">
+        <p><%=content.content%></p><button class="btn translateit" data-content="<%=encodeURI(content.content)%>"><i class="icon-eye-open"></i></button>
+      </div>
+    </div>
   </div>
-  
   <%})%>
+
 </div>
+<iframe id="playaudio" style="display:none"></audio>
+
 

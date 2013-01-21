@@ -17,7 +17,10 @@ define([
     logout : function(){
       Session.leave(function(u){
         VM.HeaderView.switchLoginout(false);
-        VM.Router.stop();
+    //    VM.Router.off();
+        VM.Router.navigate("/");
+        Backbone.history.stop();
+        delete VM.Router;
         VM.HomeView.render();
       });
       
@@ -27,8 +30,7 @@ define([
       this.template = _.template(tpl);
     },
     render     : function(){
-      this.delegateEvents(); 
-      $(this.el).html(this.template()).trigger("pagecreate");
+      $(this.el).html(this.template());
 
       
     }

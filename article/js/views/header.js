@@ -6,9 +6,16 @@ define([
 ],function($ , _, Backbone, tpl){
   
   var Header = Backbone.View.extend({
+
+    events : {
+      "click #back" : "back"
+    },
     initialize : function(){
       this.template = _.template(tpl);
       this.render();  
+    },
+    back : function(){
+      window.history.back();
     },
     switchLoginout : function(stat){
       switch(stat){

@@ -1,3 +1,7 @@
+/**
+ * rssViewer 
+ *
+ */
 define([
   'jquery',
   'underscore',
@@ -14,10 +18,9 @@ define([
       this.article = new GenArticle;
       this.template = _.template(tpl);
     
-      this.rssView = new RssView({el : "#container"});
     },
     events : {
-      "click .article-li" : "enterRss"
+  //    "click .article-li" : "enterRss"
     },
     enterRss : function(e){
       var self = this;
@@ -34,7 +37,6 @@ define([
 
     render     : function(){
       var self = this;
-      this.delegateEvents();
       this.getArticleSrcs(function(srcs){  
     
         $(self.el).html(self.template({srcs:srcs}));

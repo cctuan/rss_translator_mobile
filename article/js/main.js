@@ -26,11 +26,10 @@ require([
 
     VM.HomeView   = new HomeView({ el : "#container" });
 
-    Session.ok(function(u){ 
+//    Session.ok(function(u){ 
       VM.Router = new Router();
-      VM.Router.navigate("navView");
-    });
-  //  });
+      VM.Router.navigate("nav");
+//    });
 
     
      VM.RegisterView = new RegisterView({el : "#container"}); 
