@@ -1,4 +1,4 @@
-
+var Request = require("request");
 
 var express = require("express");
 
@@ -214,7 +214,15 @@ function start(){
     }
 
   });
+  app.get('/translate',function(req,res){
+    Request(decodeURI(req.query.q),function(error,response,body){
+      if(!error && response.statusCode == 200){
+        res.json(200,{val:body});
+      }
+    });
+    console.log(req);
 
+  });
   app.get('/user/logout',function(req,res){
       
     res.json(200,req.user.toJSON);

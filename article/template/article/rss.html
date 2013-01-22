@@ -2,18 +2,23 @@
   <%_.each(contents,function(content,index){%>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle collapsed collapse-rss-title" data-toggle="collapse" data-content="<%=encodeURI(content.content)%>" data-parent="#accordion2" href="#rss_<%=index%>">
+      <a class="accordion-toggle collapsed collapse-rss-title" data-toggle="collapse" data-stat="closed" data-content="<%=encodeURI(content.content)%>" data-parent="#accordion2" href="#rss_<%=index%>">
       <%=content.title%>
       </a>
     </div>
     <div id="rss_<%=index%>" class="accordion-body collapse collapse-rss">
       <div class="accordion-inner">
-        <p><%=content.content%></p><button class="btn translateit" data-content="<%=encodeURI(content.content)%>"><i class="icon-eye-open"></i></button>
+        <p><%=content.content%></p>
+        <button class="btn translateit" data-content="<%=encodeURI(content.content)%>">
+          <i class="icon-eye-open"></i>
+        </button>
+        <p class="translate_result"></p>
       </div>
     </div>
   </div>
   <%})%>
 
 </div>
-<iframe id="playaudio" style="display:none"></iframe>
-<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+<iframe id="playaudio" style="display:none"></audio>
+
+

@@ -16,7 +16,7 @@ baseUrl: '/js/',
     moment : "libs/moment.min",
     bootstrap : "libs/bootstrap",
     vm : "views/vm",
-    player : "libs/jquery.jplayer.min" 
+    jsonp : "libs/jquery.jsonp"
   },
   shim:{
     goog : {

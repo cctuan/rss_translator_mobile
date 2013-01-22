@@ -55,4 +55,9 @@ body{
 }
 .textcontent{
   cursor : pointer;
+  text-decoration : underline;
+}
+.textcontent.played{
+  text-decoration:underline;
+  color : blueviolet;
 }

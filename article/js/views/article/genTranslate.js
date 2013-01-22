@@ -4,7 +4,8 @@
  */
 define([
   'jquery',
-  'underscore'
+  'underscore',
+  'jsonp'
 ],function($,_){
  
   var baseUrl = "http://www.google.com/dictionary/json?callback=dict_api.callbacks.id100&q={query}&sl=en&tl=en";
@@ -30,11 +31,27 @@ define([
     });
 
   };
-
+  function pretifyString(str){
+    str.substr(0,1);
+    str.substr(str.length-2,1);
+    return str.split('","')[0].replace('[[["',"");
+  }
   function getTranslate(target,callback){
     var url = googleTransUrl
               .replace("{pattern}",target);
-    $.get('http://translate.google.cn/translate_a/t',
+
+
+    $.ajax({
+      url : "/translate",
+      dataType : "json",
+      type : "get",
+      data: {q : encodeURI(url)},
+      success : function(data){
+        
+        callback(pretifyString(data.val));
+      }
+    });
+/*    $.get('http://translate.google.cn/translate_a/t',
       {
         client:'t',
         text:target,
@@ -51,7 +68,7 @@ define([
       },
       function(data){
         console.log(data);
-      });/*
+      });
     $.ajax({
       url : url,
       crossDomain : true,
