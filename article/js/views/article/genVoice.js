@@ -12,7 +12,8 @@ define([
 
   var googleTransUrl = "http://translate.google.com.tw/translate_a/t?client=t&text={pattern}&hl=zh-TW&sl=en&tl=zh-TW&ie=UTF-8&oe=UTF-8"
 
-  var googleVoice = "http://translate.google.com.tw/translate_tts?ie=UTF-8&q={pattern}&tl={language}&total=1&prev=input";
+  //var googleVoice = "http://translate.google.com.tw/translate_tts?ie=UTF-8&q={pattern}&tl={language}&total=1&prev=input";
+  var googleVoice = "http://voicetube.tw/translate_voice?q=hello+world&q={pattern}";
 
   var langMap = {
     en : "en",
